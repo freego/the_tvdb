@@ -4,13 +4,19 @@ require_relative '../../spec_helper'
 describe TheTvdb::Show do
   
   describe "search" do
-    VCR.use_cassette 'series_search', record: :new_episodes do
-      it "should return related series when searching for a show" do
-        shows = TheTvdb::Show.search('Game of Thrones')
-        shows.size.should be(1)
-        show = shows.first
-        show['SeriesName'].should == 'Game of Thrones'
-      end
+    before do
+      VCR.insert_cassette 'series_search', record: :new_episodes
+    end
+      
+    after do
+      VCR.eject_cassette
+    end
+    
+    it "should return related series when searching for a show" do
+      shows = TheTvdb::Show.search('Game of Thrones')
+      shows.size.should be(1)
+      show = shows.first
+      show['SeriesName'].should == 'Game of Thrones'
     end
   end
 
