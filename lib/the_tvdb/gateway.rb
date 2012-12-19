@@ -7,7 +7,7 @@ require 'active_support/core_ext'
 module TheTvdb
   
   def self.gateway
-    @gateway ||= Gateway.new(api_key = nil)
+    @gateway ||= Gateway.new
   end
   
   class Gateway
