@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 19 Dec 2012 21:12:57 GMT
+      - Wed, 19 Dec 2012 21:59:53 GMT
       Content-Type:
       - text/xml
       Transfer-Encoding:
@@ -27,25 +27,25 @@ http_interactions:
       Connection:
       - keep-alive
       Last-Modified:
-      - Wed, 19 Dec 2012 21:10:02 GMT
+      - Wed, 19 Dec 2012 21:50:02 GMT
       Vary:
       - Accept-Encoding
       Expires:
-      - Wed, 19 Dec 2012 21:27:57 GMT
+      - Wed, 19 Dec 2012 22:14:53 GMT
       Cache-Control:
       - max-age=900
       Set-Cookie:
-      - __cfduid=ded8b1df8e22fb5bbd80a8a64680e66f01355951576; expires=Mon, 23-Dec-2019
+      - __cfduid=dab34f4faa9057c9aca60451bf590bbb61355954392; expires=Mon, 23-Dec-2019
         23:50:00 GMT; path=/; domain=.thetvdb.com
       Cf-Ray:
-      - 590e422b1d4e719d
+      - 6a4cec475c7d1def
     body:
       encoding: US-ASCII
       string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<Mirrors>\n  <Mirror>\n
         \   <id>1</id>\n    <mirrorpath>http://thetvdb.com</mirrorpath>\n    <typemask>7</typemask>\n
         \ </Mirror>\n</Mirrors>\n"
     http_version: 
-  recorded_at: Wed, 19 Dec 2012 21:12:57 GMT
+  recorded_at: Wed, 19 Dec 2012 21:59:53 GMT
 - request:
     method: get
     uri: http://www.thetvdb.com/api//GetSeries.php?seriesname=Game%20of%20Thrones
@@ -65,7 +65,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 19 Dec 2012 21:20:39 GMT
+      - Wed, 19 Dec 2012 21:59:53 GMT
       Content-Type:
       - text/xml; charset=utf-8
       Transfer-Encoding:
@@ -77,14 +77,14 @@ http_interactions:
       Cache-Control:
       - max-age=900
       Expires:
-      - Wed, 19 Dec 2012 21:35:39 GMT
+      - Wed, 19 Dec 2012 22:14:53 GMT
       Vary:
       - User-Agent,Accept-Encoding
       Set-Cookie:
-      - __cfduid=d61cc77bffd5dbd864b709ba5a29862961355952038; expires=Mon, 23-Dec-2019
+      - __cfduid=def1d9c73f588777a2ea62357c861ef571355954393; expires=Mon, 23-Dec-2019
         23:50:00 GMT; path=/; domain=.thetvdb.com
       Cf-Ray:
-      - 2f85c8985c443463
+      - 7b68f07905d11931
     body:
       encoding: US-ASCII
       string: ! '<?xml version="1.0" encoding="UTF-8" ?>
@@ -119,5 +119,5 @@ http_interactions:
 
         </Data>'
     http_version: 
-  recorded_at: Wed, 19 Dec 2012 21:20:39 GMT
+  recorded_at: Wed, 19 Dec 2012 21:59:53 GMT
 recorded_with: VCR 2.3.0
