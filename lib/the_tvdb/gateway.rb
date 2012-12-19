@@ -6,31 +6,25 @@ require 'active_support/core_ext'
 
 module TheTvdb
   
-  def self.gna
-    p 'gnasda'
-  end
-  
   def self.gateway
-    @gateway ||= Gateway.new
+    @gateway ||= Gateway.new(api_key = nil)
   end
   
   class Gateway
     
-    def zip_path
-      "tmp/zipfiles"
-    end
-    def data_path
-      "tmp/data"
-    end
+    # def zip_path
+    #   "tmp/zipfiles"
+    # end
+    # def data_path
+    #   "tmp/data"
+    # end
     
+    # TODO: setup a reliable env system for apikey
     def initialize(api_key = nil)
-      p ENV['TVDBKEY']
-      @api_key = api_key || APIKEY
+      @api_key = api_key || ENV['TVDBKEY']
       @mirror = get_mirror
     end
     
-    # TODO: setup a reliable env system for apikey
-    APIKEY = ENV['TVDBKEY']
     ENDPOINT = 'http://www.thetvdb.com/api/'
     
     def endpoint
@@ -57,29 +51,29 @@ module TheTvdb
       result
     end
     
-    def get_series_package(seriesid, language = 'en')
-      begin
-        open("#{zip_path}/#{seriesid}.zip", 'wb') do |file|
-          file << open("#{@mirror}/series/#{seriesid}/all/#{language}.zip").read
-        end
-        unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
-        xmlfile_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
-      rescue Exception => e
-        p e
-        puts e
-        puts "BOOOHs"
-        puts "#{@mirror}/series/#{seriesid}/all/#{language}.zip"
-        nil
-      end
-    end
-    
-    def get_episode_details(episodeid, language = 'en')
-      file_path = make_path_for_file("#{data_path}/episodes", "#{episodeid}.xml")
-      open(file_path, 'wb') do |file|
-        file << open("#{@mirror}/episodes/#{episodeid}/#{language}.xml").read
-      end
-      xmlfile_to_hash(file_path, 'Episode')
-    end
+    # def get_series_package(seriesid, language = 'en')
+    #   begin
+    #     open("#{zip_path}/#{seriesid}.zip", 'wb') do |file|
+    #       file << open("#{@mirror}/series/#{seriesid}/all/#{language}.zip").read
+    #     end
+    #     unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
+    #     xmlfile_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
+    #   rescue Exception => e
+    #     p e
+    #     puts e
+    #     puts "BOOOHs"
+    #     puts "#{@mirror}/series/#{seriesid}/all/#{language}.zip"
+    #     nil
+    #   end
+    # end
+    # 
+    # def get_episode_details(episodeid, language = 'en')
+    #   file_path = make_path_for_file("#{data_path}/episodes", "#{episodeid}.xml")
+    #   open(file_path, 'wb') do |file|
+    #     file << open("#{@mirror}/episodes/#{episodeid}/#{language}.xml").read
+    #   end
+    #   xmlfile_to_hash(file_path, 'Episode')
+    # end
     
     private
 
