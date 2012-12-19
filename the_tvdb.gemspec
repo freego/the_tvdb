@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = TheTvdb::VERSION
   gem.authors       = ["Alessandro Mencarini"]
   gem.email         = ["a.mencarini@freegoweb.it"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A TheTVDB API wrapper}
+  gem.summary       = %q{Allows to simplify the usage of TheTVDB API, making more RESTful oriented calls}
+  gem.homepage      = "https://github.com/freego/the_tvdb"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
