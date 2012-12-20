@@ -1,6 +1,6 @@
 # TheTvdb
 
-Ruby wrapper for TheTVDB.com
+Ruby wrapper for [TheTVDB.com](http://thetvdb.com/)
 
 ## Installation
 
