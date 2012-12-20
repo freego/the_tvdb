@@ -2,52 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.thetvdb.com/api/A4EF663990171DE4/mirrors.xml
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - ! '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - cloudflare-nginx
-      Date:
-      - Wed, 19 Dec 2012 21:59:53 GMT
-      Content-Type:
-      - text/xml
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Last-Modified:
-      - Wed, 19 Dec 2012 21:50:02 GMT
-      Vary:
-      - Accept-Encoding
-      Expires:
-      - Wed, 19 Dec 2012 22:14:53 GMT
-      Cache-Control:
-      - max-age=900
-      Set-Cookie:
-      - __cfduid=dab34f4faa9057c9aca60451bf590bbb61355954392; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.thetvdb.com
-      Cf-Ray:
-      - 6a4cec475c7d1def
-    body:
-      encoding: US-ASCII
-      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<Mirrors>\n  <Mirror>\n
-        \   <id>1</id>\n    <mirrorpath>http://thetvdb.com</mirrorpath>\n    <typemask>7</typemask>\n
-        \ </Mirror>\n</Mirrors>\n"
-    http_version: 
-  recorded_at: Wed, 19 Dec 2012 21:59:53 GMT
-- request:
-    method: get
     uri: http://www.thetvdb.com/api//GetSeries.php?seriesname=Game%20of%20Thrones
     body:
       encoding: US-ASCII
@@ -65,7 +19,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 19 Dec 2012 21:59:53 GMT
+      - Thu, 20 Dec 2012 10:48:58 GMT
       Content-Type:
       - text/xml; charset=utf-8
       Transfer-Encoding:
@@ -77,14 +31,14 @@ http_interactions:
       Cache-Control:
       - max-age=900
       Expires:
-      - Wed, 19 Dec 2012 22:14:53 GMT
+      - Thu, 20 Dec 2012 11:03:58 GMT
       Vary:
       - User-Agent,Accept-Encoding
       Set-Cookie:
-      - __cfduid=def1d9c73f588777a2ea62357c861ef571355954393; expires=Mon, 23-Dec-2019
+      - __cfduid=d665a8c3de7f0bd80bb3998702e5398191356000537; expires=Mon, 23-Dec-2019
         23:50:00 GMT; path=/; domain=.thetvdb.com
       Cf-Ray:
-      - 7b68f07905d11931
+      - cc984309ab1b4190
     body:
       encoding: US-ASCII
       string: ! '<?xml version="1.0" encoding="UTF-8" ?>
@@ -119,131 +73,7 @@ http_interactions:
 
         </Data>'
     http_version: 
-  recorded_at: Wed, 19 Dec 2012 21:59:53 GMT
-- request:
-    method: get
-    uri: http://www.thetvdb.com/api//mirrors.xml
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - ! '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Server:
-      - cloudflare-nginx
-      Date:
-      - Thu, 20 Dec 2012 09:00:16 GMT
-      Content-Type:
-      - text/html; charset=iso-8859-1
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Vary:
-      - Accept-Encoding
-      Set-Cookie:
-      - __cfduid=d8c529ddaaa6fa926c346ca171531f04d1355994016; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.thetvdb.com
-      Cf-Ray:
-      - ec95e96b9d200b4a
-    body:
-      encoding: US-ASCII
-      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-
-        <html><head>
-
-        <title>404 Not Found</title>
-
-        <script type="text/javascript">
-
-        //<![CDATA[
-
-        window.__CF=window.__CF||{};window.__CF.AJS={"ga_key":{"ua":"UA-9131861-1","ga_bs":"2"}};
-
-        //]]>
-
-        </script>
-
-        <script type="text/javascript">
-
-        //<![CDATA[
-
-        try{if (!window.CloudFlare) { var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",mirage:{responsive:0,lazy:0},oracle:"9a/82fd4d610b168badf482d8810933fa",paths:{cloudflare:"/cdn-cgi/nexp/abv=1870252173/"},atok:"0ffa0fe558994c40e18af775938e7fa9",zone:"thetvdb.com",rocket:"0",apps:{"ga_key":{"ua":"UA-9131861-1","ga_bs":"2"}}}];var
-        a=document.createElement("script"),b=document.getElementsByTagName("script")[0];a.async=!0;a.src="//ajax.cloudflare.com/cdn-cgi/nexp/abv=4114775854/cloudflare.min.js";b.parentNode.insertBefore(a,b);}}catch(e){};
-
-        //]]>
-
-        </script>
-
-        <script type="text/javascript">
-
-        /* <![CDATA[ */
-
-        var _gaq = _gaq || [];
-
-        _gaq.push([''_setAccount'', ''UA-9131861-1'']);
-
-        _gaq.push([''_trackPageview'']);
-
-
-        (function() {
-
-        var ga = document.createElement(''script''); ga.type = ''text/javascript'';
-        ga.async = true;
-
-        ga.src = (''https:'' == document.location.protocol ? ''https://ssl'' : ''http://www'')
-        + ''.google-analytics.com/ga.js'';
-
-        var s = document.getElementsByTagName(''script'')[0]; s.parentNode.insertBefore(ga,
-        s);
-
-        })();
-
-
-        (function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in
-        b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in
-        b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in
-        b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var
-        b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var
-        c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void
-        0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
-
-        /* ]]> */
-
-        </script>
-
-        </head><body><script type="text/javascript">
-
-        //<![CDATA[
-
-        new Image().src = "/cdn-cgi/ping?cf[location]=404&cf[js]=1";
-
-        //]]>
-
-        </script>
-
-        <noscript>
-
-        <img src="/cdn-cgi/ping?cf[location]=404&cf[js]=0" alt="">
-
-        </noscript>
-
-        <h1>Not Found</h1>
-
-        <p>The requested URL /api//mirrors.xml was not found on this server.</p>
-
-        </body></html>
-
-'
-    http_version: 
-  recorded_at: Thu, 20 Dec 2012 09:00:16 GMT
+  recorded_at: Thu, 20 Dec 2012 10:48:58 GMT
 - request:
     method: get
     uri: http://thetvdb.com/api/A4EF663990171DE4/series/121361/all/en.zip
@@ -266,7 +96,7 @@ http_interactions:
         Y2xvdWRmbGFyZS1uZ2lueA==
       !binary "RGF0ZQ==":
       - !binary |-
-        VGh1LCAyMCBEZWMgMjAxMiAxMDowNjoyMyBHTVQ=
+        VGh1LCAyMCBEZWMgMjAxMiAxMDo0ODo1OCBHTVQ=
       !binary "Q29udGVudC1UeXBl":
       - !binary |-
         YXBwbGljYXRpb24vemlw
@@ -281,7 +111,7 @@ http_interactions:
         VGh1LCAyMCBEZWMgMjAxMiAwMDozMTo0MiBHTVQ=
       !binary "RXhwaXJlcw==":
       - !binary |-
-        VGh1LCAyMCBEZWMgMjAxMiAxMDoyMToyMyBHTVQ=
+        VGh1LCAyMCBEZWMgMjAxMiAxMTowMzo1OCBHTVQ=
       !binary "Q2FjaGUtQ29udHJvbA==":
       - !binary |-
         bWF4LWFnZT05MDA=
@@ -290,12 +120,12 @@ http_interactions:
         Ynl0ZXM=
       !binary "U2V0LUNvb2tpZQ==":
       - !binary |-
-        X19jZmR1aWQ9ZGFlZjk5NDU3OGVmY2M3YzcyYzZmNmU2YTBmYjhmZjg2MTM1
-        NTk5Nzk4MzsgZXhwaXJlcz1Nb24sIDIzLURlYy0yMDE5IDIzOjUwOjAwIEdN
+        X19jZmR1aWQ9ZGY4OTFhYzI5YjE0Y2FjNTFhNGYwM2I5OThjYjEzNGJjMTM1
+        NjAwMDUzODsgZXhwaXJlcz1Nb24sIDIzLURlYy0yMDE5IDIzOjUwOjAwIEdN
         VDsgcGF0aD0vOyBkb21haW49LnRoZXR2ZGIuY29t
       !binary "Q2YtUmF5":
       - !binary |-
-        NWQ2YzllZjYzMmI0MTdiNg==
+        NzM3ZTMwYWFlOGRlZDU0Yw==
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -577,5 +407,5 @@ http_interactions:
         AGFjdG9ycy54bWxVVAUAA2hc0lBVeAAAUEsFBgAAAAADAAMAzAAAAKMvAAAA
         AA==
     http_version: 
-  recorded_at: Thu, 20 Dec 2012 10:06:24 GMT
+  recorded_at: Thu, 20 Dec 2012 10:48:59 GMT
 recorded_with: VCR 2.3.0

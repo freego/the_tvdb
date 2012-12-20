@@ -1,7 +1,7 @@
 module TheTvdb
   class Show
     
-    attr_accessor :remote_id, :name, :banner, :description, :aired_at, :episodes, :seasons
+    attr_accessor :remote_id, :name, :banner, :description, :episodes, :seasons#, :aired_at
     
     def self.search(name)
       shows = TheTvdb.gateway.get_series(name)
@@ -13,11 +13,11 @@ module TheTvdb
       @name = info['SeriesName']
       @banner = info['banner']
       @description = info['Overview']
-      @aired_at = info['FirstAired']
+      #@aired_at = info['FirstAired']
     end
     
-    def self.find(show_id)
-      info = TheTvdb.gateway.get_series_package(show_id)
+    def self.find(remote_id)
+      info = TheTvdb.gateway.get_series_package(remote_id)
       show = self.new(info['Series'])
       show.episodes = info['Episode'].map {|e| TheTvdb::Episode.new(e) }
       show

@@ -17,10 +17,13 @@ module TheTvdb
     end
     
     def zip_path
-      "#{config.dump_path}/zipfiles"
+      config.zip_path
     end
     def data_path
-      "#{config.dump_path}/data"
+      config.data_path
+    end
+    def episodes_path
+      config.episodes_path
     end
     
     # TODO: setup a reliable env system for apikey
@@ -28,7 +31,6 @@ module TheTvdb
       @api_key = api_key || ENV['TVDBKEY']
       raise 'No API key was provided. Please set one as environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
       @mirror = get_mirror
-      p @mirror
     end
     
     ENDPOINT = 'http://www.thetvdb.com/api/'
@@ -43,7 +45,6 @@ module TheTvdb
     
     def get_mirror
       hash = xml_to_hash "#{endpoint}#{@api_key}/mirrors.xml", 'Mirror'
-      p hash
       "#{hash['mirrorpath']}/api/#{@api_key}"
     end
     
@@ -72,22 +73,16 @@ module TheTvdb
         nil
       end
     end
-    # 
-    # def get_episode_details(episodeid, language = 'en')
-    #   file_path = make_path_for_file("#{data_path}/episodes", "#{episodeid}.xml")
-    #   open(file_path, 'wb') do |file|
-    #     file << open("#{@mirror}/episodes/#{episodeid}/#{language}.xml").read
-    #   end
-    #   xmlfile_to_hash(file_path, 'Episode')
-    # end
+
+    def get_episode_details(episodeid, language = 'en')
+      file_path = "#{episodes_path}/#{episodeid}.xml"
+      open(file_path, 'wb') do |file|
+        file << open("#{@mirror}/episodes/#{episodeid}/#{language}.xml").read
+      end
+      xml_to_hash(file_path, 'Episode')
+    end
     
     private
-
-      # def make_path_for_file(destination, file_name)
-      #   f_path=File.join(destination, file_name)
-      #   FileUtils.mkdir_p(File.dirname(f_path))
-      #   f_path
-      # end
       
       def open_xml(xml)
         begin
@@ -98,15 +93,6 @@ module TheTvdb
           #puts e.backtrace
         end
       end
-    
-      # def xmlfile_to_hash(file_path, selector = nil)
-      #   if selector
-      #     document = open_local_xml(file_path).css(selector)
-      #     Hash.from_xml(document.to_s)[selector]
-      #   else
-      #     Hash.from_xml(open_local_xml(file_path).to_s)
-      #   end      
-      # end
     
       def xml_to_hash(url, selector = nil)
         doc = open_xml(url)
@@ -123,7 +109,7 @@ module TheTvdb
       #     Array.from_xml(open_xml(url).to_s)
       #   end
       # end
-      # 
+
       def unzip_file (file, destination)
         Zip::ZipFile.open(file) { |zip_file|
           zip_file.each { |f|
@@ -133,7 +119,6 @@ module TheTvdb
           }
         }
       end
-
     
   end
 end

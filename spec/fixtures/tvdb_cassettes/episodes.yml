@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.thetvdb.com/api/A4EF663990171DE4/mirrors.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Thu, 20 Dec 2012 10:48:57 GMT
+      Content-Type:
+      - text/xml
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Thu, 20 Dec 2012 10:40:03 GMT
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 20 Dec 2012 11:03:57 GMT
+      Cache-Control:
+      - max-age=900
+      Set-Cookie:
+      - __cfduid=d665a8c3de7f0bd80bb3998702e5398191356000537; expires=Mon, 23-Dec-2019
+        23:50:00 GMT; path=/; domain=.thetvdb.com
+      Cf-Ray:
+      - 97a8c668b69e34a9
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<Mirrors>\n  <Mirror>\n
+        \   <id>1</id>\n    <mirrorpath>http://thetvdb.com</mirrorpath>\n    <typemask>7</typemask>\n
+        \ </Mirror>\n</Mirrors>\n"
+    http_version: 
+  recorded_at: Thu, 20 Dec 2012 10:48:57 GMT
+- request:
+    method: get
+    uri: http://thetvdb.com/api/A4EF663990171DE4/episodes/4245778/en.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "U2VydmVy":
+      - !binary |-
+        Y2xvdWRmbGFyZS1uZ2lueA==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VGh1LCAyMCBEZWMgMjAxMiAxMDo1MTozNyBHTVQ=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC94bWw7IGNoYXJzZXQ9dXRmLTg=
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+      !binary "WC1Qb3dlcmVkLUJ5":
+      - !binary |-
+        UEhQLzUuMi42LTErbGVubnkxNg==
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bWF4LWFnZT05MDA=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        VGh1LCAyMCBEZWMgMjAxMiAxMTowNjozNyBHTVQ=
+      !binary "VmFyeQ==":
+      - !binary |-
+        VXNlci1BZ2VudCxBY2NlcHQtRW5jb2Rpbmc=
+      !binary "U2V0LUNvb2tpZQ==":
+      - !binary |-
+        X19jZmR1aWQ9ZDUxODQzZDVkNThmOWQxNDFiOGRhYTk4NjRiMWQ3YTQ0MTM1
+        NjAwMDY5NzsgZXhwaXJlcz1Nb24sIDIzLURlYy0yMDE5IDIzOjUwOjAwIEdN
+        VDsgcGF0aD0vOyBkb21haW49LnRoZXR2ZGIuY29t
+      !binary "Q2YtUmF5":
+      - !binary |-
+        YzI1ZTRkNGFlMDM0NzgyNg==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiID8+CjxEYXRh
+        PjxFcGlzb2RlPgo8aWQ+NDI0NTc3ODwvaWQ+CjxzZWFzb25pZD40NzMyNzE8
+        L3NlYXNvbmlkPgo8RXBpc29kZU51bWJlcj45PC9FcGlzb2RlTnVtYmVyPgo8
+        RXBpc29kZU5hbWU+QmxhY2t3YXRlcjwvRXBpc29kZU5hbWU+CjxGaXJzdEFp
+        cmVkPjIwMTItMDUtMjg8L0ZpcnN0QWlyZWQ+CjxHdWVzdFN0YXJzPjwvR3Vl
+        c3RTdGFycz4KPERpcmVjdG9yPk5laWwgTWFyc2hhbGw8L0RpcmVjdG9yPgo8
+        V3JpdGVyPkdlb3JnZSBSLiBSLiBNYXJ0aW48L1dyaXRlcj4KPE92ZXJ2aWV3
+        PlR5cmlvbiBhbmQgdGhlIExhbm5pc3RlcnMgZmlnaHQgZm9yIHRoZWlyIGxp
+        dmVzIGFzIFN0YW5uaXPigJkgZmxlZXQgYXNzYXVsdHMgS2luZ+KAmXMgTGFu
+        ZGluZy48L092ZXJ2aWV3Pgo8UHJvZHVjdGlvbkNvZGU+PC9Qcm9kdWN0aW9u
+        Q29kZT4KPGxhc3R1cGRhdGVkPjEzNTI4NDkzODM8L2xhc3R1cGRhdGVkPgo8
+        ZmxhZ2dlZD4wPC9mbGFnZ2VkPgo8RFZEX2Rpc2NpZD48L0RWRF9kaXNjaWQ+
+        CjxEVkRfc2Vhc29uPjI8L0RWRF9zZWFzb24+CjxEVkRfZXBpc29kZW51bWJl
+        cj45LjA8L0RWRF9lcGlzb2RlbnVtYmVyPgo8RFZEX2NoYXB0ZXI+PC9EVkRf
+        Y2hhcHRlcj4KPGFic29sdXRlX251bWJlcj4xOTwvYWJzb2x1dGVfbnVtYmVy
+        Pgo8ZmlsZW5hbWU+ZXBpc29kZXMvMTIxMzYxLzQyNDU3NzguanBnPC9maWxl
+        bmFtZT4KPHNlcmllc2lkPjEyMTM2MTwvc2VyaWVzaWQ+CjxtaXJyb3J1cGRh
+        dGU+MjAxMi0xMS0xMyAxNToyODowMTwvbWlycm9ydXBkYXRlPgo8SU1EQl9J
+        RD50dDIwODQzNDI8L0lNREJfSUQ+CjxFcEltZ0ZsYWc+MjwvRXBJbWdGbGFn
+        Pgo8UmF0aW5nPjguNDwvUmF0aW5nPgo8U2Vhc29uTnVtYmVyPjI8L1NlYXNv
+        bk51bWJlcj4KPExhbmd1YWdlPmVuPC9MYW5ndWFnZT4KPC9FcGlzb2RlPjwv
+        RGF0YT4K
+    http_version: 
+  recorded_at: Thu, 20 Dec 2012 10:51:37 GMT
+recorded_with: VCR 2.3.0
