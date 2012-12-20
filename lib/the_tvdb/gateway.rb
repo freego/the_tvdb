@@ -12,17 +12,23 @@ module TheTvdb
   
   class Gateway
     
-    # def zip_path
-    #   "tmp/zipfiles"
-    # end
-    # def data_path
-    #   "tmp/data"
-    # end
+    def config
+      TheTvdb.config
+    end
+    
+    def zip_path
+      "#{config.dump_path}/zipfiles"
+    end
+    def data_path
+      "#{config.dump_path}/data"
+    end
     
     # TODO: setup a reliable env system for apikey
     def initialize(api_key = nil)
       @api_key = api_key || ENV['TVDBKEY']
+      raise 'No API key was provided. Please set one as environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
       @mirror = get_mirror
+      p @mirror
     end
     
     ENDPOINT = 'http://www.thetvdb.com/api/'
@@ -36,12 +42,13 @@ module TheTvdb
     # end
     
     def get_mirror
-      hash = xmlurl_to_hash "#{endpoint}#{@api_key}/mirrors.xml", 'Mirror'
+      hash = xml_to_hash "#{endpoint}#{@api_key}/mirrors.xml", 'Mirror'
+      p hash
       "#{hash['mirrorpath']}/api/#{@api_key}"
     end
     
     def get_time
-      xmlurl_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
+      xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
     end
     
     def get_series(name)
@@ -51,21 +58,20 @@ module TheTvdb
       result
     end
     
-    # def get_series_package(seriesid, language = 'en')
-    #   begin
-    #     open("#{zip_path}/#{seriesid}.zip", 'wb') do |file|
-    #       file << open("#{@mirror}/series/#{seriesid}/all/#{language}.zip").read
-    #     end
-    #     unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
-    #     xmlfile_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
-    #   rescue Exception => e
-    #     p e
-    #     puts e
-    #     puts "BOOOHs"
-    #     puts "#{@mirror}/series/#{seriesid}/all/#{language}.zip"
-    #     nil
-    #   end
-    # end
+    def get_series_package(seriesid, language = 'en')
+      begin
+        open("#{zip_path}/#{seriesid}.zip", 'wb') do |file|
+          file << open("#{@mirror}/series/#{seriesid}/all/#{language}.zip").read
+        end
+        unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
+        xml_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
+      rescue Exception => e
+        p e
+        #puts e.backtrace
+        puts "#{@mirror}/series/#{seriesid}/all/#{language}.zip"
+        nil
+      end
+    end
     # 
     # def get_episode_details(episodeid, language = 'en')
     #   file_path = make_path_for_file("#{data_path}/episodes", "#{episodeid}.xml")
@@ -83,13 +89,15 @@ module TheTvdb
       #   f_path
       # end
       
-      def open_xml(url)
-        Nokogiri::XML(open(url))
+      def open_xml(xml)
+        begin
+          location = (xml =~ URI::regexp) ? open(xml) : File.open(xml)
+          Nokogiri::XML(location)
+        rescue Exception => e
+          p e
+          #puts e.backtrace
+        end
       end
-          
-      # def open_local_xml(file_path)
-      #   Nokogiri::XML(File.open(file_path))
-      # end
     
       # def xmlfile_to_hash(file_path, selector = nil)
       #   if selector
@@ -100,10 +108,11 @@ module TheTvdb
       #   end      
       # end
     
-      def xmlurl_to_hash(url, selector = nil)
+      def xml_to_hash(url, selector = nil)
         doc = open_xml(url)
-        doc = doc.css(selector) if selector
+        doc = doc.css(selector) if selector.present?
         result = Hash.from_xml(doc.to_s)
+        result[selector] if selector.present?
       end
     
       # def xmlurl_to_array(url, selector = nil)
@@ -115,15 +124,15 @@ module TheTvdb
       #   end
       # end
       # 
-      # def unzip_file (file, destination)
-      #   Zip::ZipFile.open(file) { |zip_file|
-      #     zip_file.each { |f|
-      #       f_path=File.join(destination, f.name)
-      #       FileUtils.mkdir_p(File.dirname(f_path))
-      #       zip_file.extract(f, f_path) unless File.exist?(f_path)
-      #     }
-      #   }
-      # end
+      def unzip_file (file, destination)
+        Zip::ZipFile.open(file) { |zip_file|
+          zip_file.each { |f|
+            f_path=File.join(destination, f.name)
+            FileUtils.mkdir_p(File.dirname(f_path))
+            zip_file.extract(f, f_path) unless File.exist?(f_path)
+          }
+        }
+      end
 
     
   end
