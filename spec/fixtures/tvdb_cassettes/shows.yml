@@ -76,7 +76,7 @@ http_interactions:
   recorded_at: Thu, 20 Dec 2012 10:48:58 GMT
 - request:
     method: get
-    uri: http://thetvdb.com/api/A4EF663990171DE4/series/121361/all/en.zip
+    uri: http://thetvdb.com/api/1234567898765432/series/121361/all/en.zip
     body:
       encoding: US-ASCII
       string: ''

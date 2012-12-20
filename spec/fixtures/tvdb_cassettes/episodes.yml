@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.thetvdb.com/api/A4EF663990171DE4/mirrors.xml
+    uri: http://www.thetvdb.com/api/1234567898765432/mirrors.xml
     body:
       encoding: US-ASCII
       string: ''
@@ -48,7 +48,7 @@ http_interactions:
   recorded_at: Thu, 20 Dec 2012 10:48:57 GMT
 - request:
     method: get
-    uri: http://thetvdb.com/api/A4EF663990171DE4/episodes/4245778/en.xml
+    uri: http://thetvdb.com/api/1234567898765432/episodes/4245778/en.xml
     body:
       encoding: US-ASCII
       string: ''

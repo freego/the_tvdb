@@ -12,3 +12,7 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/tvdb_cassettes'
   config.hook_into :webmock
 end
+
+TheTvdb.setup do |config|
+  config.api_key = '1234567898765432'
+end
