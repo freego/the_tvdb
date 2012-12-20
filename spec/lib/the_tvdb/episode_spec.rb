@@ -21,7 +21,7 @@ describe TheTvdb::Episode do
     it "should return all the info of the episode" do
       episode.name.should == 'Blackwater'
       episode.number.should == 9
-      episode.aired_at.should == Date.parse('2012-05-28')
+      episode.aired_at.should == '2012-05-28'
       episode.description.should == "Tyrion and the Lannisters fight for their lives as Stannis’ fleet assaults King’s Landing."
     end
     

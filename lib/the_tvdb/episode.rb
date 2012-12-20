@@ -9,13 +9,21 @@ module TheTvdb
       @season_number = info['Combined_season'].to_i
       @name = info['EpisodeName']
       @number = info['EpisodeNumber'].to_i
-      @aired_at = Date.parse(info['FirstAired'])
+      @aired_at = info['FirstAired']
       @description = info['Overview']
     end
     
     def self.find(remote_id)
       info = TheTvdb.gateway.get_episode_details(remote_id)
       self.new(info)
+    end
+    
+    def to_hash
+      {
+        remote_id: @remote_id, name: @name, description: @description,
+        season_remote_id: @season_remote_id, season_number: @season_number,
+        number: @number, aired_at: @aired_at
+      }
     end
 
   end

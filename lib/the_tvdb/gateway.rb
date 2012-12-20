@@ -13,7 +13,7 @@ module TheTvdb
   class Gateway
     
     def config
-      TheTvdb.config
+      TheTvdb.configuration
     end
     
     def zip_path
@@ -28,8 +28,8 @@ module TheTvdb
     
     # TODO: setup a reliable env system for apikey
     def initialize(api_key = nil)
-      @api_key = api_key || ENV['TVDBKEY']
-      raise 'No API key was provided. Please set one as environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
+      @api_key = config.api_key
+      raise 'No API key was provided. Please set one as TheTvdb::Configuration.apikey or as an environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
       @mirror = get_mirror
     end
     

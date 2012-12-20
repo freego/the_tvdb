@@ -8,6 +8,13 @@ module TheTvdb
       shows.map {|s| self.new(s) }
     end
 
+    def self.find(remote_id)
+      info = TheTvdb.gateway.get_series_package(remote_id)
+      show = self.new(info['Series'])
+      show.episodes = info['Episode'].map {|e| TheTvdb::Episode.new(e) }
+      show
+    end
+
     def initialize(info)
       @remote_id = info['seriesid'].to_i
       @name = info['SeriesName']
@@ -16,11 +23,8 @@ module TheTvdb
       #@aired_at = info['FirstAired']
     end
     
-    def self.find(remote_id)
-      info = TheTvdb.gateway.get_series_package(remote_id)
-      show = self.new(info['Series'])
-      show.episodes = info['Episode'].map {|e| TheTvdb::Episode.new(e) }
-      show
+    def to_hash
+      { remote_id: @remote_id, name: @name, banner: @banner, description: @description }
     end
 
   end

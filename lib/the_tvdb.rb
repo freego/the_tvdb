@@ -5,5 +5,9 @@ require "the_tvdb/show"
 require "the_tvdb/episode"
 
 module TheTvdb
+  
+  def self.setup
+    yield self.configuration
+  end
 
 end
