@@ -5,12 +5,9 @@ require 'zip/zip'
 require 'active_support/core_ext'
 
 module TheTvdb
-  
-  def self.gateway
-    @gateway ||= Gateway.new
-  end
-  
   class Gateway
+    
+    include Singleton
     
     def config
       TheTvdb.configuration
@@ -48,8 +45,13 @@ module TheTvdb
       "#{hash['mirrorpath']}/api/#{@api_key}"
     end
     
-    def get_time
-      xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
+    def update(time)
+      hash = xml_to_hash "#{endpoint}/Updates.php?time=#{time || last_updated}", 'Items'
+    end
+    
+    attr_accessor :last_updated
+    def time
+      @last_updated = xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
     end
     
     def get_series(name)

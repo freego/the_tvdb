@@ -14,7 +14,7 @@ describe TheTvdb::Episode do
     VCR.eject_cassette
   end
   
-  describe "find" do
+  describe ".find" do
 
     let(:episode) { TheTvdb::Episode.find(4245778) }
     

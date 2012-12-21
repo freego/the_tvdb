@@ -16,7 +16,7 @@ module TheTvdb
     end
 
     def initialize(info)
-      @remote_id = info['seriesid'].to_i
+      @remote_id = info['id'].to_i
       @name = info['SeriesName']
       @banner = info['banner']
       @description = info['Overview']

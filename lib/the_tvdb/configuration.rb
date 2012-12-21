@@ -1,15 +1,9 @@
 module TheTvdb
-  
-  def self.configuration
-    @config ||= Configuration.instance
-  end
-  
   class Configuration
     
     include Singleton
     
     attr_accessor :api_key
-    
     def initialize
       @api_key = ENV['TVDBKEY']
     end

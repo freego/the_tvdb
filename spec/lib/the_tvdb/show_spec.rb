@@ -12,7 +12,7 @@ describe TheTvdb::Show do
     VCR.eject_cassette
   end
   
-  describe "search" do
+  describe ".search" do
 
     let(:shows) { TheTvdb::Show.search('Game of Thrones') }
     let(:show) { shows.first }
@@ -27,7 +27,7 @@ describe TheTvdb::Show do
     
   end
 
-  describe "find" do
+  describe ".find" do
 
     let(:show) { TheTvdb::Show.find(121361) }
     let(:episode) { show.episodes[24] }
