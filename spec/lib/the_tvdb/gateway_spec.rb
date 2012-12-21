@@ -25,7 +25,7 @@ describe TheTvdb::Gateway do
     it "should return a list of updated series and episodes" do
       result = TheTvdb.update(1356079970)
       result[:time].should == 1356080761
-      result[:series].should have(3).shows
+      result[:shows].should have(3).items
       gateway.last_updated.should == 1356080761
     end
   end
