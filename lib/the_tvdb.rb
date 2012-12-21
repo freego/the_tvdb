@@ -21,7 +21,7 @@ module TheTvdb
   # Starting from the last update recorded on the gateway, a hash with the new
   # update time and the updated shows are returned
   #
-  # @param [Integer] timestamp the last update timestamp (if not provided the last_updated attribute of the gateway is used instead)
+  # @param [Integer] timestamp the last update timestamp (if not provided the last_updated attribute of Gateway is used instead)
   # @return [Hash] the new last_updated time and the Shows that have been updated
   def self.update(timestamp = nil)
     update_hash = gateway.update(timestamp)
