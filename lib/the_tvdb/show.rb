@@ -20,7 +20,6 @@ module TheTvdb
       @name = info['SeriesName']
       @banner = info['banner']
       @description = info['Overview']
-      #@aired_at = info['FirstAired']
     end
     
     def to_hash
