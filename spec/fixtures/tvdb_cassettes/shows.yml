@@ -787,4 +787,50 @@ http_interactions:
         YWN0b3JzLnhtbFVUBQADIyHUUFV4AABQSwUGAAAAAAMAAwDMAAAAoi8AAAAA
     http_version: 
   recorded_at: Fri, 21 Dec 2012 09:07:11 GMT
+- request:
+    method: get
+    uri: http://www.thetvdb.com/api/1234567898765432/mirrors.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Mon, 24 Dec 2012 15:05:53 GMT
+      Content-Type:
+      - text/xml
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Mon, 24 Dec 2012 15:00:04 GMT
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Mon, 24 Dec 2012 15:20:53 GMT
+      Cache-Control:
+      - max-age=900
+      Set-Cookie:
+      - __cfduid=ded407954e27e753fec08053c0413972b1356361553; expires=Mon, 23-Dec-2019
+        23:50:00 GMT; path=/; domain=.thetvdb.com
+      Cf-Ray:
+      - 25eaf5b6b12048b
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<Mirrors>\n  <Mirror>\n
+        \   <id>1</id>\n    <mirrorpath>http://thetvdb.com</mirrorpath>\n    <typemask>7</typemask>\n
+        \ </Mirror>\n</Mirrors>\n"
+    http_version: 
+  recorded_at: Mon, 24 Dec 2012 15:05:53 GMT
 recorded_with: VCR 2.3.0

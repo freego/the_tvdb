@@ -23,6 +23,11 @@ describe TheTvdb::Show do
       show.remote_id.should == 121361
       description = 'Based on the fantasy novel series "A Song of Ice and Fire," Game of Thrones explores the story of an epic battle among seven kingdoms and two ruling families in the only game that matters - the Game of Thrones. All seek control of the Iron Throne, the possession of which ensures survival through the 40-year winter to come.'
       show.description.should == description
+      show.imdb_id.should == 'tt0944947'
+      show.zap2it_id.should == 'SH01389809'
+      show.first_aired.should == '2011-04-17'
+      show.banner.should == 'http://thetvdb.com/banners/graphical/121361-g26.jpg'
+      show.language.should == 'en'
     end
     
   end

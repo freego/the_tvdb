@@ -1,7 +1,8 @@
 module TheTvdb
   class Show
     
-    attr_accessor :remote_id, :name, :banner, :description, :episodes, :seasons#, :aired_at
+    attr_accessor :remote_id, :name, :banner, :description, :episodes, :seasons,
+      :first_aired, :imdb_id, :zap2it_id, :language
     
     def self.search(name)
       shows = TheTvdb.gateway.get_series(name)
@@ -20,6 +21,10 @@ module TheTvdb
       @name = info['SeriesName']
       @banner = "#{TheTvdb.gateway.mirror}/banners/#{info['banner']}"
       @description = info['Overview']
+      @imdb_id = info['IMDB_ID']
+      @zap2it_id = info['zap2it_id']
+      @first_aired = info['FirstAired']
+      @language = info['language']
     end
     
     def to_hash
