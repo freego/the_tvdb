@@ -18,7 +18,7 @@ module TheTvdb
     def initialize(info)
       @remote_id = info['id'].to_i
       @name = info['SeriesName']
-      @banner = info['banner']
+      @banner = "#{TheTvdb.gateway.mirror}/banners/#{info['banner']}"
       @description = info['Overview']
     end
     

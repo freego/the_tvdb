@@ -23,11 +23,14 @@ module TheTvdb
       config.episodes_path
     end
     
+    attr_accessor :api_key, :mirror, :api_path, :last_updated
+    
     # TODO: setup a reliable env system for apikey
     def initialize(api_key = nil)
       @api_key = config.api_key
       raise 'No API key was provided. Please set one as TheTvdb::Configuration.apikey or as an environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
       @mirror = get_mirror
+      @api_path = "#{@mirror}/api/#{@api_key}"
     end
     
     ENDPOINT = 'http://www.thetvdb.com/api/'
@@ -36,20 +39,15 @@ module TheTvdb
       ENDPOINT
     end
     
-    # def api_key
-    #   APIKEY
-    # end
-    
     def get_mirror
       hash = xml_to_hash "#{endpoint}#{@api_key}/mirrors.xml", 'Mirror'
-      "#{hash['mirrorpath']}/api/#{@api_key}"
+      hash['mirrorpath']
     end
     
     def update(time)
       hash = xml_to_hash "#{endpoint}/Updates.php?time=#{time || last_updated}", 'Items'
     end
     
-    attr_accessor :last_updated
     def time
       @last_updated = xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
     end
@@ -64,14 +62,13 @@ module TheTvdb
     def get_series_package(seriesid, language = 'en')
       begin
         open("#{zip_path}/#{seriesid}.zip", 'wb') do |file|
-          file << open("#{@mirror}/series/#{seriesid}/all/#{language}.zip").read
+          file << open("#{@api_path}/series/#{seriesid}/all/#{language}.zip").read
         end
         unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
         xml_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
       rescue Exception => e
-        p e
-        #puts e.backtrace
-        puts "#{@mirror}/series/#{seriesid}/all/#{language}.zip"
+        puts "Could not retrieve series package"
+        puts "#{@api_path}/series/#{seriesid}/all/#{language}.zip"
         nil
       end
     end
@@ -79,7 +76,7 @@ module TheTvdb
     def get_episode_details(episodeid, language = 'en')
       file_path = "#{episodes_path}/#{episodeid}.xml"
       open(file_path, 'wb') do |file|
-        file << open("#{@mirror}/episodes/#{episodeid}/#{language}.xml").read
+        file << open("#{@api_path}/episodes/#{episodeid}/#{language}.xml").read
       end
       xml_to_hash(file_path, 'Episode')
     end
