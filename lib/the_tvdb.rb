@@ -26,7 +26,7 @@ module TheTvdb
   def self.update(timestamp = nil)
     update_hash = gateway.update(timestamp)
     result = { time: update_hash['Time'].to_i }
-    result[:shows] = update_hash['Series'].map {|show_remote_id| Show.find(show_remote_id) }
+    result[:shows] = update_hash['Series'].map {|show_remote_id| Show.find(show_remote_id) } if update_hash['Series']
     gateway.last_updated = result[:time]
     result
   end
