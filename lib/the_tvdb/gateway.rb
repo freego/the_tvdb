@@ -26,7 +26,7 @@ module TheTvdb
     attr_accessor :api_key, :mirror, :api_path, :last_updated
     
     def initialize(api_key = nil)
-      @api_key = config.api_key
+      @api_key = config.api_key || ENV['TVDBKEY']
       raise 'No API key was provided. Please set one as TheTvdb::Configuration.apikey or as an environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
       @mirror = get_mirror
       @api_path = "#{@mirror}/api/#{@api_key}"
@@ -44,11 +44,17 @@ module TheTvdb
     end
     
     def update(time)
+      raise "A time reference to get updates is required. Please use set_time to fetch a first reference" unless (time || last_updated)
       hash = xml_to_hash "#{endpoint}/Updates.php?time=#{time || last_updated}", 'Items'
     end
     
     def time
       xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
+    end
+
+    # Useful for first time updating
+    def set_time
+      @last_updated = time
     end
     
     def get_series(name)
