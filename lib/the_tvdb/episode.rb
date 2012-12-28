@@ -35,9 +35,26 @@ module TheTvdb
     
     def to_hash
       {
-        remote_id: @remote_id, name: @name, description: @description,
-        season_remote_id: @season_remote_id, season_number: @season_number,
-        number: @number, aired_at: @aired_at
+        remote_id: @remote_id,
+        name: @name,
+        description: @description,
+        season_remote_id: @season_remote_id,
+        season_number: @season_number,
+        number: @number,
+        aired_at: @aired_at,
+        guest_stars: @guest_stars,
+        director: @director,
+        writer: @writer,
+        updated_at: @updated_at,
+        dvd_disc: @dvd_disc,
+        dvd_season: @dvd_season,
+        dvd_episode_number: @dvd_episode_number,
+        dvd_chapter: @dvd_chapter,
+        absolute_number: @absolute_number,
+        image_url: @image_url,
+        imdb_id: @imdb_id,
+        language: @language,
+        production_code: @production_code
       }
     end
 

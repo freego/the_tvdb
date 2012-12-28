@@ -1,7 +1,7 @@
 module TheTvdb
   class Show
     
-    attr_accessor :remote_id, :name, :banner, :description, :episodes, :seasons,
+    attr_accessor :remote_id, :name, :banner, :description, :episodes,
       :first_aired, :imdb_id, :zap2it_id, :language
     
     def self.search(name)
@@ -12,7 +12,7 @@ module TheTvdb
     def self.find(remote_id)
       info = TheTvdb.gateway.get_series_package(remote_id)
       show = self.new(info['Series'])
-      show.episodes = [ info['Episode'] ].flatten.map {|e| TheTvdb::Episode.new(e) }
+      show.episodes = info['Episode'].blank? ? [] : [ info['Episode'] ].flatten.map {|e| TheTvdb::Episode.new(e) }
       show
     end
 
@@ -25,10 +25,20 @@ module TheTvdb
       @zap2it_id = info['zap2it_id']
       @first_aired = info['FirstAired']
       @language = info['language']
+      @episodes = []
     end
     
     def to_hash
-      { remote_id: @remote_id, name: @name, banner: @banner, description: @description }
+      { 
+        remote_id: @remote_id,
+        name: @name,
+        banner: @banner,
+        description: @description,
+        first_aired: @first_aired,
+        imdb_id: @imdb_id,
+        zap2it_id: @zap2it_id,
+        language: @language
+      }
     end
 
   end
