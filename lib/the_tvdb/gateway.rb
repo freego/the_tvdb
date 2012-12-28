@@ -25,7 +25,6 @@ module TheTvdb
     
     attr_accessor :api_key, :mirror, :api_path, :last_updated
     
-    # TODO: setup a reliable env system for apikey
     def initialize(api_key = nil)
       @api_key = config.api_key
       raise 'No API key was provided. Please set one as TheTvdb::Configuration.apikey or as an environment variable (e.g.: `export TVDBKEY=1234567898765432`).' if !@api_key
@@ -49,14 +48,12 @@ module TheTvdb
     end
     
     def time
-      @last_updated = xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
+      xml_to_hash "#{endpoint}/Updates.php?type=none", 'Time'
     end
     
     def get_series(name)
       doc = open_xml "#{endpoint}/GetSeries.php?seriesname=#{URI.escape(name)}"
-      result = doc.css('Series').map { |series| Hash.from_xml(series.to_s)['Series'] }
-      #puts result.to_yaml
-      result
+      doc.css('Series').map { |series| Hash.from_xml(series.to_s)['Series'] }
     end
     
     def get_series_package(seriesid, language = 'en')
@@ -67,9 +64,7 @@ module TheTvdb
         unzip_file("#{zip_path}/#{seriesid}.zip", "#{data_path}/xml/#{seriesid}")
         xml_to_hash "#{data_path}/xml/#{seriesid}/#{language}.xml", 'Data'
       rescue Exception => e
-        puts "Could not retrieve series package"
-        puts "#{@api_path}/series/#{seriesid}/all/#{language}.zip"
-        nil
+        puts "Could not retrieve series package - #{@api_path}/series/#{seriesid}/all/#{language}.zip"
       end
     end
 
@@ -88,8 +83,7 @@ module TheTvdb
           location = (xml =~ URI::regexp) ? open(xml) : File.open(xml)
           Nokogiri::XML(location)
         rescue Exception => e
-          p e
-          #puts e.backtrace
+          puts "Could not open XML file at #{xml}"
         end
       end
     
@@ -100,15 +94,6 @@ module TheTvdb
         result[selector] if selector.present?
       end
     
-      # def xmlurl_to_array(url, selector = nil)
-      #   if selector
-      #     document = open_xml(url).css(selector)
-      #   
-      #   else
-      #     Array.from_xml(open_xml(url).to_s)
-      #   end
-      # end
-
       def unzip_file (file, destination)
         Zip::ZipFile.open(file) { |zip_file|
           zip_file.each { |f|

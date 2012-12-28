@@ -17,7 +17,6 @@ describe TheTvdb::Gateway do
   describe "#time" do
     it "should return the current server time for update purposes" do
       gateway.time.should == '1356080760'
-      gateway.last_updated.should == '1356080760'
     end
   end
   
