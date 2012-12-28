@@ -12,7 +12,7 @@ module TheTvdb
     def self.find(remote_id)
       info = TheTvdb.gateway.get_series_package(remote_id)
       show = self.new(info['Series'])
-      show.episodes = info['Episode'].map {|e| TheTvdb::Episode.new(e) }
+      show.episodes = [ info['Episode'] ].flatten.map {|e| TheTvdb::Episode.new(e) }
       show
     end
 

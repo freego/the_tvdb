@@ -47,6 +47,12 @@ describe TheTvdb::Show do
       episode.name.should == 'Blackwater'
     end
     
+    it "should return an array of episodes even if there is just one episode" do
+      one_episode_show = TheTvdb::Show.find(77856)
+      one_episode_show.episodes.size.should == 1
+    end
+    
+    
   end
 
 end

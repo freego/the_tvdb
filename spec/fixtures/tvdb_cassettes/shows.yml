@@ -897,4 +897,98 @@ http_interactions:
         </Data>'
     http_version: 
   recorded_at: Fri, 28 Dec 2012 00:32:17 GMT
+- request:
+    method: get
+    uri: http://thetvdb.com/api/1234567898765432/series/77856/all/en.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "U2VydmVy":
+      - !binary |-
+        Y2xvdWRmbGFyZS1uZ2lueA==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        RnJpLCAyOCBEZWMgMjAxMiAwMTowOTozOSBHTVQ=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vemlw
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MTYzMQ==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        V2VkLCAxOSBPY3QgMjAxMSAwNjo0OTozOCBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        RnJpLCAyOCBEZWMgMjAxMiAwMToyNDozOCBHTVQ=
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bWF4LWFnZT05MDA=
+      !binary "QWNjZXB0LVJhbmdlcw==":
+      - !binary |-
+        Ynl0ZXM=
+      !binary "U2V0LUNvb2tpZQ==":
+      - !binary |-
+        X19jZmR1aWQ9ZGEyYjMzN2NhZDJiZTUxNDBlYzA5YTJlMzlkODI5ODZiMTM1
+        NjY1Njk3ODsgZXhwaXJlcz1Nb24sIDIzLURlYy0yMDE5IDIzOjUwOjAwIEdN
+        VDsgcGF0aD0vOyBkb21haW49LnRoZXR2ZGIuY29t
+      !binary "Q2YtUmF5":
+      - !binary |-
+        MjdhZGJlNGQyOGEwNDhi
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+        AMwAAAB9BQAAAAA=
+    http_version: 
+  recorded_at: Fri, 28 Dec 2012 01:09:39 GMT
 recorded_with: VCR 2.3.0

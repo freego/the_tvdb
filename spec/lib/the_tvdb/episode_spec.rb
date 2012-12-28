@@ -44,3 +44,16 @@ describe TheTvdb::Episode do
   end
 
 end
+
+describe "Weird case episode" do
+
+  before do
+    VCR.insert_cassette 'weird_episode', record: :new_episodes
+  end
+    
+  after do
+    VCR.eject_cassette
+  end
+  
+
+end
