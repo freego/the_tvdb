@@ -22,7 +22,7 @@ module TheTvdb
       @dvd_episode_number = info['DVD_episodenumber']
       @dvd_chapter = info['DVD_chapter']
       @absolute_number = info['absolute_number']
-      @image_url = "#{TheTvdb.gateway.mirror}/banners/#{info['filename']}"
+      @image_url = "#{TheTvdb.gateway.mirror}/banners/#{info['filename']}" unless info['filename'].nil?
       @imdb_id = info['IMDB_ID']
       @language = info['Language']
       @prodiction_code = info['ProductionCode']

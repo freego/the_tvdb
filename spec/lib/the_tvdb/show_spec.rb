@@ -30,6 +30,11 @@ describe TheTvdb::Show do
       show.language.should == 'en'
     end
     
+    it "should return nil as a banner on no image" do
+      no_image_show = TheTvdb::Show.search("Good Girls Don't").first
+      no_image_show.banner.should be_nil
+    end
+    
   end
 
   describe ".find" do

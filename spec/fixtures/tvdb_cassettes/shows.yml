@@ -833,4 +833,68 @@ http_interactions:
         \ </Mirror>\n</Mirrors>\n"
     http_version: 
   recorded_at: Mon, 24 Dec 2012 15:05:53 GMT
+- request:
+    method: get
+    uri: http://www.thetvdb.com/api//GetSeries.php?seriesname=Good%20Girls%20Don't
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Fri, 28 Dec 2012 00:32:17 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/5.2.6-1+lenny16
+      Cache-Control:
+      - max-age=900
+      Expires:
+      - Fri, 28 Dec 2012 00:47:16 GMT
+      Vary:
+      - User-Agent,Accept-Encoding
+      Set-Cookie:
+      - __cfduid=d1e23e844cef2d1e98714d7a07e742d0c1356654736; expires=Mon, 23-Dec-2019
+        23:50:00 GMT; path=/; domain=.thetvdb.com
+      Cf-Ray:
+      - 27aa52874da048b
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="UTF-8" ?>
+
+        <Data>
+
+        <Series>
+
+        <seriesid>127281</seriesid>
+
+        <language>en</language>
+
+        <SeriesName>Good Girls Don''t</SeriesName>
+
+        <FirstAired>2004-06-04</FirstAired>
+
+        <IMDB_ID>tt0413572</IMDB_ID>
+
+        <id>127281</id>
+
+        </Series>
+
+        </Data>'
+    http_version: 
+  recorded_at: Fri, 28 Dec 2012 00:32:17 GMT
 recorded_with: VCR 2.3.0
