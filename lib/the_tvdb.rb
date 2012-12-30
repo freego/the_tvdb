@@ -32,3 +32,9 @@ module TheTvdb
   end
 
 end
+
+class String
+  def to_tvdb_array
+    gsub(/^\|/, '').split('|')
+  end
+end
