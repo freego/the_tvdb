@@ -1,5 +1,7 @@
 # TheTvdb
 
+[![Build Status](https://travis-ci.org/freego/the_tvdb.png?branch=master)](https://travis-ci.org/freego/the_tvdb)
+
 Ruby wrapper for [TheTVDB.com](http://thetvdb.com/).
 
 ## Installation
