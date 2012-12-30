@@ -1,9 +1,9 @@
 module TheTvdb
   class Episode
-    
+
     attr_accessor :remote_id, :season_remote_id, :season_number, :name, :number, :aired_at, :description,
       :guest_stars, :director, :writer, :updated_at, :dvd_disc, :dvd_season, :dvd_episode_number, :dvd_chapter,
-      :absolute_number, :image_url, :imdb_id, :language, :production_code
+      :absolute_number, :image_url, :imdb_id, :language, :production_code, :rating, :rating_count
 
     def initialize(info)
       @remote_id = info['id'].to_i
@@ -13,9 +13,9 @@ module TheTvdb
       @number = info['EpisodeNumber'].to_i
       @aired_at = info['FirstAired']
       @description = info['Overview']
-      @guest_stars = info['GuestStars']
-      @director = info['Director']
-      @writer = info['Writer']
+      @guest_stars = info['GuestStars'].try(:to_tvdb_array)
+      @director = info['Director'].try(:to_tvdb_array)
+      @writer = info['Writer'].try(:to_tvdb_array)
       @updated_at = Time.at(info['lastupdated'].to_i)
       @dvd_disc = info['DVD_discid']
       @dvd_season = info['DVD_season']
@@ -26,13 +26,15 @@ module TheTvdb
       @imdb_id = info['IMDB_ID']
       @language = info['Language']
       @prodiction_code = info['ProductionCode']
+      @rating = info['Rating'].try(:to_f)
+      @rating_count = info['RatingCount'].try(:to_i)
     end
-    
+
     def self.find(remote_id)
       info = TheTvdb.gateway.get_episode_details(remote_id)
       self.new(info)
     end
-    
+
     def to_hash
       {
         remote_id: @remote_id,
@@ -54,7 +56,9 @@ module TheTvdb
         image_url: @image_url,
         imdb_id: @imdb_id,
         language: @language,
-        production_code: @production_code
+        production_code: @production_code,
+        rating: @rating,
+        rating_count: @rating_count
       }
     end
 

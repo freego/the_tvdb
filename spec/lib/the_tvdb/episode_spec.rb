@@ -26,8 +26,8 @@ describe TheTvdb::Episode do
       episode.description.should == "Tyrion and the Lannisters fight for their lives as Stannis’ fleet assaults King’s Landing."
       episode.season_remote_id.should == 473271
       episode.guest_stars.should be_nil
-      episode.director.should == 'Neil Marshall'
-      episode.writer.should == 'George R. R. Martin'
+      episode.director.should == [ 'Neil Marshall' ]
+      episode.writer.should == [ 'George R. R. Martin' ]
       episode.updated_at.should == Time.at(1352849383)
       # episode.flagged.should == '0'
       episode.dvd_disc.should be_nil
@@ -39,6 +39,9 @@ describe TheTvdb::Episode do
       episode.imdb_id.should == 'tt2084342'
       episode.language.should == 'en'
       episode.production_code.should be_nil
+      episode.rating.should == 8.4
+      # RatingCount is not included in the detail data, just in the series package
+      # episode.rating_count.should == 282
     end
     
   end

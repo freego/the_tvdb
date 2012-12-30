@@ -19,7 +19,6 @@ module TheTvdb
     end
 
     def initialize(info, partial=false)
-      p info
       @remote_id = info['id'].to_i
       @name = info['SeriesName']
       @banner = "#{TheTvdb.gateway.mirror}/banners/#{info['banner']}" unless info['banner'].nil?
