@@ -21,10 +21,17 @@ describe TheTvdb::Gateway do
   end
   
   describe "#update" do
-    it "should return a list of updated series and episodes" do
-      result = TheTvdb.update(1356079970)
+    it "should return an array of updated series and episodes" do
+      result = TheTvdb.update(1356079970, true)
       result[:time].should == 1356080761
       result[:shows].should have(3).items
+      gateway.last_updated.should == 1356080761
+    end
+
+    it "should return the ids of updated series" do
+      result = TheTvdb.update(1356079970)
+      result[:shows].should have(3).items
+      result[:shows].first.should == '80367'
       gateway.last_updated.should == 1356080761
     end
   end
