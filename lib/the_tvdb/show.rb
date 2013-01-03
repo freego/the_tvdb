@@ -12,10 +12,15 @@ module TheTvdb
     end
 
     def self.find(remote_id)
-      info = TheTvdb.gateway.get_series_package(remote_id)
-      show = self.new(info['Series'])
-      show.episodes = info['Episode'].blank? ? [] : [ info['Episode'] ].flatten.map {|e| TheTvdb::Episode.new(e) }
-      show
+      begin
+        info = TheTvdb.gateway.get_series_package(remote_id)
+        show = self.new(info['Series'])
+        show.episodes = info['Episode'].blank? ? [] : [ info['Episode'] ].flatten.map {|e| TheTvdb::Episode.new(e) }
+        show
+      rescue
+        puts 'There was an issue with the series you tried to fetch'
+        nil
+      end
     end
 
     def initialize(info, partial=false)
