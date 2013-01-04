@@ -31,7 +31,7 @@ describe TheTvdb::Gateway do
     it "should return the ids of updated series" do
       result = TheTvdb.update(1356079970)
       result[:shows].should have(3).items
-      result[:shows].first.should == '80367'
+      result[:shows].first.should == 80367
       gateway.last_updated.should == 1356080761
     end
   end

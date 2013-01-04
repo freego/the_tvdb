@@ -32,10 +32,11 @@ module TheTvdb
       if full_data
         result[:shows] = update_hash['Series'].map {|show_remote_id| Show.find(show_remote_id) }
       else
-        result[:shows] = update_hash['Series']
+        result[:shows] = update_hash['Series'].map {|show_remote_id| show_remote_id.to_i }
       end
     end
     gateway.last_updated = result[:time]
+    p result
     result
   end
 
