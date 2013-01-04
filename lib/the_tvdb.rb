@@ -36,7 +36,6 @@ module TheTvdb
       end
     end
     gateway.last_updated = result[:time]
-    p result
     result
   end
 
