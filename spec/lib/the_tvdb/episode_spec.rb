@@ -9,15 +9,15 @@ describe TheTvdb::Episode do
   before do
     VCR.insert_cassette 'episodes', record: :new_episodes
   end
-    
+
   after do
     VCR.eject_cassette
   end
-  
+
   describe ".find" do
 
     let(:episode) { TheTvdb::Episode.find(4245778) }
-    
+
     it "should return all the info of the episode" do
       episode.name.should == 'Blackwater'
       episode.number.should == 9
@@ -43,7 +43,7 @@ describe TheTvdb::Episode do
       # RatingCount is not included in the detail data, just in the series package
       # episode.rating_count.should == 282
     end
-    
+
   end
 
 end
@@ -53,10 +53,9 @@ describe "Weird case episode" do
   before do
     VCR.insert_cassette 'weird_episode', record: :new_episodes
   end
-    
+
   after do
     VCR.eject_cassette
   end
-  
 
 end

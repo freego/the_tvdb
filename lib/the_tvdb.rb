@@ -5,11 +5,11 @@ require "the_tvdb/show"
 require "the_tvdb/episode"
 
 module TheTvdb
-  
+
   def self.setup
     yield self.configuration
   end
-  
+
   def self.configuration
     @config ||= Configuration.instance
   end
@@ -17,7 +17,7 @@ module TheTvdb
   def self.gateway
     @gateway ||= Gateway.instance
   end
-  
+
   # Starting from the last update recorded on the gateway, a hash with the new
   # update time and the updated shows are returned
   #
@@ -43,6 +43,6 @@ end
 
 class String
   def to_tvdb_array
-    gsub(/^\|/, '').split('|')
+    gsub(/^\|/, '').split('|').map(&:strip)
   end
 end
