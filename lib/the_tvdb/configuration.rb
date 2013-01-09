@@ -20,15 +20,14 @@ module TheTvdb
     end
     
     def zip_path
-      "#{dump_path}/zipfiles"
+      "#{dump_path}zipfiles"
     end
     def data_path
-      "#{dump_path}/data"
+      "#{dump_path}data"
     end
     def episodes_path
       "#{data_path}/episodes"
     end
-    
 
   end
 end

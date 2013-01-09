@@ -37,13 +37,14 @@ describe TheTvdb::Show do
     
   end
 
+
   describe ".find" do
-    
+
     context "Game of Thrones" do
 
       let(:show) { TheTvdb::Show.find(121361) }
       let(:episode) { show.episodes[24] }
-      
+
       it "should return advanced information if available" do
         show.name.should == 'Game of Thrones'
         show.airs_day_of_week.should == "Sunday"
@@ -65,15 +66,10 @@ describe TheTvdb::Show do
         show.actors.should include('Peter Dinklage')
         show.should have(46).actors
       end
-    
+
       it "should return info and episodes when looking up a show id" do
         show.should have(27).episodes
         episode.name.should == 'Blackwater'
-      end
-
-      it "should return an array of episodes even if there is just one episode" do
-        one_episode_show = TheTvdb::Show.find(77856)
-        one_episode_show.episodes.size.should == 1
       end
 
     end
@@ -82,7 +78,22 @@ describe TheTvdb::Show do
       one_episode_show = TheTvdb::Show.find(77856)
       one_episode_show.episodes.size.should == 1
     end
+      
+    it "should return an array of episodes even if there is just one episode" do
+      one_episode_show = TheTvdb::Show.find(77856)
+      one_episode_show.episodes.size.should == 1
+    end
 
+  end
+
+  describe ".banners" do
+
+    let(:show) { TheTvdb::Show.find(121361) }
+
+    it "should return some urls" do
+      result = show.banners
+      result.should be_an Array
+    end
   end
 
 end

@@ -74,6 +74,12 @@ module TheTvdb
       end
     end
 
+    def get_banners(seriesid)
+      xml_to_hash "#{data_path}/xml/#{seriesid}/banners.xml"
+    rescue
+      # TODO: Create fallback for missing file
+    end
+
     def get_episode_details(episodeid, language = 'en')
       file_path = "#{episodes_path}/#{episodeid}.xml"
       open(file_path, 'wb') do |file|
@@ -97,7 +103,8 @@ module TheTvdb
         doc = open_xml(url)
         doc = doc.css(selector) if selector.present?
         result = Hash.from_xml(doc.to_s)
-        result[selector] if selector.present?
+        result = result[selector] if selector.present?
+        result
       end
     
       def unzip_file (file, destination)

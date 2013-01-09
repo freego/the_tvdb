@@ -52,6 +52,10 @@ module TheTvdb
       end
 
     end
+    
+    def banners
+      xml = TheTvdb.gateway.get_banners(@remote_id), 'Banners'
+    end
 
     def to_hash
       { 
